@@ -148,6 +148,15 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  changeGrade(student) {
+    const randNum = Math.random();
+    const points = Math.random() * 10;
+    if (randNum > 0.5) {
+      student.grade += points;
+    } else {
+      student.grade -= points;
+    }
+  }
 }
 
 /*
@@ -171,6 +180,7 @@ class Student extends Lambdasian {
     this.previousBackground = studentAttrs.previousBackground;
     this.className = studentAttrs.className;
     this.favSubjects = studentAttrs.favSubjects;
+    this.grade = (100 * Math.random());
   }
   listSubjects() {
     let subjects = this.favSubjects.join(', ');
@@ -197,8 +207,18 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor {
+  constructor(pmAtrrs) {
+    super(pmAtrrs);
+    this.gradClassName = pmAtrrs.gradClassName;
+    this.favInstructor = pmAtrrs.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 
 /*
