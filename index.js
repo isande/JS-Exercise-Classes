@@ -192,6 +192,11 @@ class Student extends Lambdasian {
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
+  graduate() {
+    if (this.grade >= 70) {
+      return `${this.name} has graduated from Lambda School! Hurrah!`;
+    }
+  }
 }
 
 /*
